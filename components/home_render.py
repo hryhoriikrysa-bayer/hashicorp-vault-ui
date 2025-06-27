@@ -1,8 +1,8 @@
 import streamlit.components.v1 as components
 
 from components.custom_styles.custom_list import list_arrow_color, list_text_color
-from components.header_components import render_header
-from components.scripts import config_head
+from components.html_components import render_header
+from components.config_head import config_head
 
 
 def render_home_header():
@@ -20,7 +20,7 @@ def render_home_component():
      {config_head}
     </head>
     <body>
-    <div class = 'px-40'>
+    <div>
         <ul class = "list-none space-y-2 px-5">
             <li 
                 class="relative pl-6 text-lg {list_text_color} before:content-['➤'] before:absolute before:left-0 before:{list_arrow_color} before:font-bold">

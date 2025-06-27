@@ -1,20 +1,16 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-from components.renders.delete_path_render import render_delete_path_header, render_delete_path_component
-from components.header_components import sidebar_buttons
+from components.form_template import render_form
+from components.html_components import render_header
+from components.page_config import config_page
+from components.sidebar_template import render_sidebar_btns
 
-st.set_page_config(
-    layout="wide",
-    page_icon="static/logo.png",
-    page_title="HashiCorp Vault Self Service"
-)
+# is_user_logged = st.user.is_logged_in
+is_user_logged = True
 
-ICON = "static/fulllogo.png"
-st.logo(ICON, size="large")
+config_page()
+render_sidebar_btns(is_user_logged=is_user_logged)
 
-render_delete_path_header()
-render_delete_path_component()
-
-with st.sidebar:
-    components.html(sidebar_buttons, scrolling=True)
+render_header("Delete path", "Delete an existing secret path with form provided below.")
+render_form(is_user_logged=is_user_logged)

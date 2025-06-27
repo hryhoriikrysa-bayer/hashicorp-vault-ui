@@ -1,28 +1,8 @@
 import streamlit.components.v1 as components
 
+from components.config_head import config_head
 from components.custom_styles.custom_generics import *
-from components.optional.custom_styles.custom_mysecrets import *
-from components.scripts import config_head
 
-logout_button = f"""
-    <button onclick="" class="shrink-0 rounded-full border {logout_button_border_color} {logout_button_bg_color} {logout_button_text_color} px-3 py-1 rounded">
-        Logout
-    </button>
-"""
-
-sidebar_buttons = f"""
-   <!DOCTYPE html>
-    <html>
-    <head>
-         {config_head}
-    </head>
-    <body>
-        <div class = 'flex items-center grid grid-cols-1 grid-rows-1 gap-4'>
-            {logout_button}
-        </div>
-    </body>
-    </html>
-"""
 
 def get_page_title(title):
     html = f"""
@@ -36,7 +16,16 @@ def get_page_title(title):
 def get_page_description(description):
     html = f"""
       <div class="px-2 {text1_color}">
-        <p class="xl">{description}</p>
+        <p>{description}</p>
+      </div>
+      """.format(title=description)
+
+    return html
+
+def get_login_warning(description):
+    html = f"""
+      <div class="px-2 {text_violet}">
+        <p class="text-2xl font-bold">{description}</p>
       </div>
       """.format(title=description)
 
@@ -53,7 +42,7 @@ def render_header(title=None, description=None, height=150):
          {config_head}
         </head>
         <body>
-            <div class = 'px-40'>
+            <div>
                 <div class = 'space-y-8'>
                     {title}
                     {description}
